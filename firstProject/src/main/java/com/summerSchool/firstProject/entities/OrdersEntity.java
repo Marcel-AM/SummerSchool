@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,31 +15,29 @@ import javax.persistence.Table;
 public class OrdersEntity {
 	
 	@Id
-	@Column(name="ORDERS_ID")
-	private int ordersId;
+	@GeneratedValue
+	private int orderId;
 	
-	@Column(name="ORDERS_CODE")
-	private String ordersCode;
+	@Column(name="ORDER_CODE")
+	private String orderCode;
 	
-	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
-	private List<OrdersDetailsEntity> ordersDetailsList;
-	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "orderEntity")
+	private List<OrdersDetailsEntity> orderDetailsList;
 
-	public int getOrdersId() {
-		return ordersId;
+	public int getOrderId() {
+		return orderId;
 	}
 
-	public void setOrdersId(int ordersId) {
-		this.ordersId = ordersId;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
-	public String getOrdersCode() {
-		return ordersCode;
+	public String getOrderCode() {
+		return orderCode;
 	}
 
-	public void setOrdersCode(String ordersCode) {
-		this.ordersCode = ordersCode;
+	public void setOrderCode(String orderCode) {
+		this.orderCode = orderCode;
 	}
 
 }

@@ -30,4 +30,5 @@ public class OrdersDetailsId implements Serializable{
 		this.productId = productId;
 	}
 
+
 }
